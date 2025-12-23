@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+      body{
+        font-family: Arial;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      .btn-flex{
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        background-color: rgb(222, 222, 222);
+        align-items: center;
+
+      }
+      .click-btn{
+        background-color: rgb(25, 135, 84);
+        color: white;
+        border: none;
+        margin-left: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev@8.6.4/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function App(){
+        const [count, setCount] = React.useState(0);
+        const buttonRef = React.useRef(null);
+        
+        function countSet(){
+          setCount(count + 1);
+
+        }
+        function countReset(){
+          setCount(0);
+        }
+        function autoCount(){
+          setInterval(()=>{
+            const buttonElem = buttonRef.current;
+            if(buttonElem){
+              buttonElem.click();
+            }
+
+          },1000)
+
+        }
+      
+        
+        return(
+          <div className='btn-flex'>
+
+            <button 
+            onClick={countSet}
+            ref={buttonRef}
+            className='click-btn'
+            >Clicked {count}  {count === 1? ' time': ' times'} 
+            </button>
+            <button 
+              onClick={countReset}
+              className='click-btn'
+            >Reset</button>
+            <button 
+              onClick={autoCount}
+              className='click-btn'  
+            >Auto Click</button>
+            
+          </div>
+        );
+      }
+
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App/>);
+       
+    </script>
+  </body>
+</html>
