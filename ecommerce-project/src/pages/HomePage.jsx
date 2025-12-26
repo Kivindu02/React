@@ -1,13 +1,20 @@
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
-import { products } from '../../starting-code/data/products';
 import './HomePage.css';
 
+
 export function HomePage() {
-  axios.get('http://localhost:3000/api/products').then((respose)=>{
-      console.log(respose.data);
+
+  const [products, setProduct] = useState([]);
+
+  useEffect(()=>{
+    axios.get('http://localhost:3000/api/products').then((respose)=>{
+      setProduct(respose.data);
     })
+  },[])
+  
 
   return (
     <>
