@@ -6,7 +6,15 @@ import { Chatbot } from 'supersimpledev';
 
 function App(){
 
-        const [chatMessages, setChatMessages] = useState(JSON.parse(localStorage.getItem('messages'))) || [];
+        const [chatMessages, setChatMessages] = useState(() => {
+          const savedMessages = localStorage.getItem('messages');
+          return savedMessages ? JSON.parse(savedMessages) : [];
+        });
+
+        // this way also correct        
+        //const initialMessages = JSON.parse(localStorage.getItem('messages')) || [];
+        // const [chatMessages, setChatMessages] = useState(initialMessages);
+
 
         useEffect(()=>{
 

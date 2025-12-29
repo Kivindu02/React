@@ -2,9 +2,9 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import { Header } from '../components/Header';
+import { Header } from '../../components/Header';
 import BuyAgainIcon from '../assets/images/icons/buy-again.png';
-import { formatMoney } from '../utils/money';
+import { formatMoney } from '../../utils/money';
 import './OrdersPage.css';
 
 
@@ -89,14 +89,14 @@ export function OrdersPage({ cart }) {
                     );
 
                   })}
-                 
+
                 </div>
               </div>
 
             );
 
           })}
-   
+
         </div>
       </div>
     </>
