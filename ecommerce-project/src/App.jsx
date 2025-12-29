@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { HomePage } from './pages/home/HomePage';
 import { CheckoutPage } from './pages/Checkout/CheckoutPage';
 import './App.css'
-import { OrdersPage } from './pages/OrdersPage';
+import { OrdersPage } from './pages/orders/OrdersPage';
 import { TrackingPage } from './pages/TrackingPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+
 
 
 function App() {
@@ -14,9 +15,12 @@ function App() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/cart-items?expand=product').then((response) => {
+    const fetchAppData = async () => {
+      const response = await axios.get('/api/cart-items?expand=product')
       setCart(response.data);
-    });
+    }
+    
+    fetchAppData();  
 
   },[]);
 

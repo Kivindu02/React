@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { Header } from '../../components/Header';
-import BuyAgainIcon from '../assets/images/icons/buy-again.png';
+import BuyAgainIcon from '../../assets/images/icons/buy-again.png';
 import { formatMoney } from '../../utils/money';
 import './OrdersPage.css';
 
